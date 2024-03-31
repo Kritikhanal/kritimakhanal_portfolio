@@ -5,7 +5,7 @@ const app = express();
 const port = 5000;
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "./../client/build")));
 
 app.use(cors());
 app.use(express.json({ limit: "25mb" }));
@@ -49,6 +49,10 @@ function sendEmail({ email, name, message }) {
     });
   });
 }
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./../client/build/index.html"));
+});
 
 app.get("/", (req, res) => {
   sendEmail(req.query)
