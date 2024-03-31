@@ -1,1 +1,0 @@
-# Kritikhanal.github.io
